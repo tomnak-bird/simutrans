@@ -427,8 +427,8 @@ void dr_textur(int xp, int yp, int w, int h)
 		w = min( xp+w, AllDib->bmiHeader.biWidth ) - xp;
 		h = min( yp+h, AllDib->bmiHeader.biHeight ) - yp;
 		if(  h>1  &&  w>0  ) {
-			SetStretchBltMode( hdc, HALFTONE );
-			SetBrushOrgEx( hdc, 0, 0, NULL );
+			// Preserve hard pixel edges when scaling the software framebuffer.
+			SetStretchBltMode( hdc, COLORONCOLOR );
 			StretchDIBits(hdc, xscr, yscr, (w*x_scale)/32, (h*y_scale)/32, xp, yp+h+1, w, -h, AllDibData, AllDib, DIB_RGB_COLORS, SRCCOPY);
 		}
 	}
