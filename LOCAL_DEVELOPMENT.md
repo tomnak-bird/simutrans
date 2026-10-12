@@ -13,7 +13,7 @@ This repository is the working source tree for local Simutrans OTRP fixes and fe
 
 Do not commit directly to a detached `upstream/*` reference. Make local changes on `local-development` and commit each independent fix or feature separately.
 
-The personal fork did not yet exist when this repository was initialized. Open `Create_GitHub_Fork.url` once and create the fork under `tomnak-bird`. The local `origin` URL is already configured, so no Git reconfiguration is needed afterward.
+The personal fork is available under `tomnak-bird` and configured as `origin`. The `Create_GitHub_Fork.url` file is retained only as a reference to the upstream fork page; it is no longer needed for setup.
 
 ## Updating from official OTRP
 
