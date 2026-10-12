@@ -21,8 +21,9 @@ With a clean working tree, run `Update_From_OTRP_Upstream.cmd`. It performs:
 
 1. `git fetch upstream --prune`
 2. `git merge --no-edit upstream/OTRP-KUTAv6`
+3. `git push origin local-development`
 
-The script refuses to start when local files are uncommitted. If a merge conflict occurs, it stops without discarding either side; preserve the files and ask Codex to resolve and test the merge.
+The script only runs on `local-development` and refuses to start when local files are uncommitted. If a merge conflict occurs, it stops without discarding either side; preserve the files and ask Codex to resolve and test the merge.
 
 Before deploying a newly built executable, record the tested commit with a Git tag and keep the executable filename tied to that commit.
 

@@ -2,6 +2,15 @@
 setlocal EnableExtensions
 pushd "%~dp0"
 
+for /f "delims=" %%B in ('git branch --show-current') do set "CURRENT_BRANCH=%%B"
+if not "%CURRENT_BRANCH%"=="local-development" (
+    echo ERROR: Switch to local-development before running this updater.
+    echo Current branch: %CURRENT_BRANCH%
+    popd
+    pause
+    exit /b 4
+)
+
 for /f "delims=" %%S in ('git status --porcelain') do (
     echo ERROR: The working tree has uncommitted changes.
     echo Commit or stash them before updating from OTRP upstream.
@@ -26,6 +35,10 @@ if errorlevel 1 (
     pause
     exit /b 3
 )
+
+echo Pushing the updated local-development branch to the personal fork...
+git push origin local-development
+if errorlevel 1 goto :failed
 
 echo.
 echo OTRP upstream update completed.
